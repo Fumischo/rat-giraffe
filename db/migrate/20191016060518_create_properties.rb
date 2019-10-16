@@ -4,6 +4,7 @@ class CreateProperties < ActiveRecord::Migration[5.0]
       t.string :name
       t.integer :rent
       t.string :address
+      t.integer :age
       t.text :remarks_column
 
       t.timestamps

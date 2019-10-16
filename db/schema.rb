@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20191016060518) do
     t.string   "name"
     t.integer  "rent"
     t.string   "address"
+    t.integer  "age"
     t.text     "remarks_column"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
