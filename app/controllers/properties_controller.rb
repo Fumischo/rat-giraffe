@@ -15,7 +15,8 @@ class PropertiesController < ApplicationController
   # GET /properties/new
   def new
     @property = Property.new
-    
+    2.times {@property.closest_stations.build}
+
     
   end
 
@@ -71,6 +72,9 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:name, :rent, :address, :age, :remarks_column)
+      params.require(:property).permit(:name, :rent, :address, :age, :remarks_column,  closest_stations_attributes: [
+        :route,
+        :station,
+        :on_foot]))
     end
 end
