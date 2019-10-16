@@ -1,5 +1,19 @@
-<h1>最寄り駅</h1>
+<h1>物件編集</h1>
 
-<%= render 'form', closest_station: @closest_station %>
+<% count = 0 %>
+<%= form_for @closest_station do |form| %>
+  <% 2.times do |num| %>
+    <h3>最寄り駅<%= count = count + 1 =%><h3>
+    路線名<br>
+    <%= form.text_field :route %><br>
 
-<%= link_to 'Back', closest_stations_path %>
+    駅名<br>
+    <%= form.text_field :station %><br>
+
+    徒歩分数<br>
+    <%= form.text_field :on_foot %>分<br>
+  <% end %>
+  <%= form.submit("登録する") %><br>
+<% end %>
+
+<%= link_to '戻る', properties_path %>

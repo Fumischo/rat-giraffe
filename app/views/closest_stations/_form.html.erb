@@ -1,32 +1,19 @@
-<%= form_for(closest_station) do |f| %>
-  <% if closest_station.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(closest_station.errors.count, "error") %> prohibited this closest_station from being saved:</h2>
+<h1>物件編集</h1>
 
-      <ul>
-      <% closest_station.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<% count = 0 %>
+<%= form_for @closest_station do |form| %>
+  <% 2.times do |num| %>
+    <h3>最寄り駅<%= count = count + 1 =%><h3>
+    路線名<br>
+    <%= form.text_field :route %><br>
+
+    駅名<br>
+    <%= form.text_field :station %><br>
+
+    徒歩分数<br>
+    <%= form.text_field :on_foot %>分<br>
   <% end %>
-
-  <div class="field">
-    <%= f.label :路線名 %>
-    <%= f.text_field :route %>
-  </div>
-
-  <div class="field">
-    <%= f.label :駅名 %>
-    <%= f.text_field :station %>
-  </div>
-
-  <div class="field">
-    <%= f.label :徒歩分数 %>
-    <%= f.number_field  :on_foot %>分
-  </div>
-
-  <div class="actions">
-    <%= f.submit '登録する' %>
-  </div>
+  <%= form.submit("登録する") %><br>
 <% end %>
+
+<%= link_to '戻る', properties_path %>
