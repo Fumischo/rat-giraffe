@@ -15,6 +15,8 @@ class PropertiesController < ApplicationController
   # GET /properties/new
   def new
     @property = Property.new
+    
+    
   end
 
   # GET /properties/1/edit
@@ -28,7 +30,7 @@ class PropertiesController < ApplicationController
 
     respond_to do |format|
       if @property.save
-        format.html { redirect_to @property, notice: 'Property was successfully created.' }
+        format.html { redirect_to @property, notice: '登録が完了しました。' }
         format.json { render :show, status: :created, location: @property }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class PropertiesController < ApplicationController
   def update
     respond_to do |format|
       if @property.update(property_params)
-        format.html { redirect_to @property, notice: 'Property was successfully updated.' }
+        format.html { redirect_to @property, notice: '更新完了' }
         format.json { render :show, status: :ok, location: @property }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class PropertiesController < ApplicationController
   def destroy
     @property.destroy
     respond_to do |format|
-      format.html { redirect_to properties_url, notice: 'Property was successfully destroyed.' }
+      format.html { redirect_to properties_url, notice: '削除できました' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +71,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:name, :rent, :address, :remarks_column)
+      params.require(:property).permit(:name, :rent, :address, :age, :remarks_column)
     end
 end

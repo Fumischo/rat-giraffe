@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Route:</strong>
+  <strong>路線名:</strong>
   <%= @closest_station.route %>
 </p>
 
 <p>
-  <strong>Station:</strong>
-  <%= @closest_station.station %>
+  <strong>駅名:</strong>
+  <%= @closest_station.station %>駅
 </p>
 
 <p>
-  <strong>On foot:</strong>
-  <%= @closest_station.on_foot %>
+  <strong>徒歩分数:</strong>
+  <%= @closest_station.on_foot %>分
 </p>
 
-<%= link_to 'Edit', edit_closest_station_path(@closest_station) %> |
-<%= link_to 'Back', closest_stations_path %>
+<%= link_to '編集', edit_closest_station_path(@closest_station) %> |
+<%= link_to '戻る', closest_stations_path %>

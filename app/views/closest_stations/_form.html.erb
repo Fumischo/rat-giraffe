@@ -12,21 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :route %>
+    <%= f.label :路線名 %>
     <%= f.text_field :route %>
   </div>
 
   <div class="field">
-    <%= f.label :station %>
+    <%= f.label :駅名 %>
     <%= f.text_field :station %>
   </div>
 
   <div class="field">
-    <%= f.label :on_foot %>
-    <%= f.number_field :on_foot %>
+    <%= f.label :徒歩分数 %>
+    <%= f.number_field  :on_foot %>分
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit '登録する' %>
   </div>
 <% end %>
