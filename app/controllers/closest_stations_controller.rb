@@ -28,7 +28,7 @@ class ClosestStationsController < ApplicationController
 
     respond_to do |format|
       if @closest_station.save
-        format.html { redirect_to @closest_station, notice: 'Closest station was successfully created.' }
+        format.html { redirect_to @closest_station, notice: '登録完了' }
         format.json { render :show, status: :created, location: @closest_station }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ClosestStationsController < ApplicationController
   def update
     respond_to do |format|
       if @closest_station.update(closest_station_params)
-        format.html { redirect_to @closest_station, notice: 'Closest station was successfully updated.' }
+        format.html { redirect_to @closest_station, notice: '更新完了' }
         format.json { render :show, status: :ok, location: @closest_station }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ClosestStationsController < ApplicationController
   def destroy
     @closest_station.destroy
     respond_to do |format|
-      format.html { redirect_to closest_stations_url, notice: 'Closest station was successfully destroyed.' }
+      format.html { redirect_to closest_stations_url, notice: '削除完了' }
       format.json { head :no_content }
     end
   end
