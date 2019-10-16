@@ -75,6 +75,6 @@ class PropertiesController < ApplicationController
       params.require(:property).permit(:name, :rent, :address, :age, :remarks_column,  closest_stations_attributes: [
         :route,
         :station,
-        :on_foot]))
+        :on_foot])
     end
 end
