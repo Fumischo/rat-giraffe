@@ -1,43 +1,54 @@
-<%= form_for(property) do |f| %>
-  <% if property.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+<%= form_for(@property) do |f| %>
+	<% if @property.errors.any? %>
+		<div id="error_explanation">
+			<h2>入力内容にエラーが<%= @property.errors.count %>件あります。</h2>
+		</div>
+		<ul style="list-style-type: none">
+			<% @property.errors.full_messages.each do |msg| %>
+				<li id='error_message'><%= msg %></li>
+			<% end %>
+		</ul>
+	<% end %>
 
-      <ul>
-      <% property.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.fieds_for :物件名 %>
-    <%= f.text_field :name %>
-  </div>
 
-  <div class="field">
-    <%= f.label :賃料 %>
-    <%= f.number_field :rent %>円
-  </div>
+		<%= f.label :物件名 %>
+		<%= f.text_field :name %>
 
-  <div class="field">
-    <%= f.label :住所 %>
-    <%= f.text_area :address %>
-  </div>
+		<%= f.label :賃料 %>
+		<%= f.text_field :rent %>円
 
-  <div class="field">
-    <%= f.label :築年数 %>
-    <%= f.number_field :age %>年
-  </div>
-  
+		<%= f.label :住所 %>
+		<%= f.text_field :address %>
 
-  <div class="field">
-    <%= f.label :備考 %>
-    <%= f.text_area :remarks_column %>
-  </div>
+		<%= f.label :築年数 %>
+		<%= f.text_field :age %>年
 
-  <div class="actions">
-    <%= f.submit "登録する" %>
-  </div>
+		<%= f.label :備考%>
+		<%= f.text_area :remarks_column %>
+	<br>
+
+  <hr>
+
+
+	
+		<% @property.closest_stations.each.with_index(1) do |station, i| %>
+		<h4><%= "最寄り駅#{i}" %></h4>
+			<%= f.fields_for :closest_stations, station do |f| %>
+				<%= f.label :路線名 %>
+				<%= f.text_field :route %>
+				<%= f.label :駅名 %>
+				<%= f.text_field :station %>
+				<%= f.label :徒歩分数 %>
+				<%= f.text_field :on_foot %>分
+			<% end %>
+		<% end %>
+    <br>
+		<%= f.submit %>
+    <br>
+		<%= link_to '戻る', properties_path %>
+	
 <% end %>
+
+
+
