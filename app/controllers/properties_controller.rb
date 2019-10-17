@@ -18,8 +18,14 @@ class PropertiesController < ApplicationController
     end
   end
 
+
+
+
   def show
   end
+
+
+
 
   def edit
     if @property.closest_stations.empty?
@@ -38,10 +44,14 @@ class PropertiesController < ApplicationController
     end
   end
 
+
+
   def destroy
   @property.destroy
   redirect_to properties_path, notice: "削除完了"
 end
+
+
 
   private
 
@@ -61,6 +71,8 @@ end
       )
   end
 
+
+  
   def set_property
     @property = Property.find(params[:id])
   end
