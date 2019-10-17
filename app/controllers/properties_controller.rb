@@ -4,10 +4,16 @@ class PropertiesController < ApplicationController
     @properties = Property.all
   end
 
+
+
+  
   def new
     @property = Property.new
     2.times {@property.closest_stations.build}
   end
+
+
+
 
   def create
     @property = Property.new(property_params)
@@ -56,23 +62,18 @@ end
   private
 
   def property_params
-    params.require(:property).permit(
-      :name,
-      :rent,
-      :address,
-      :remarks_column,
-      :age,
-      closest_stations_attributes: [
+    params.require(:property).permit( :name, :rent, :address, :remarks_column, :age, 
+        closest_stations_attributes: [
         :route,
         :station,
         :on_foot,
         :id,
-        :property_id]
+        :property_id ]
       )
   end
 
 
-  
+
   def set_property
     @property = Property.find(params[:id])
   end
