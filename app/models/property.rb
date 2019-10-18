@@ -5,7 +5,7 @@ class Property < ApplicationRecord
   validates :age, numericality: { only_integer: true, greater_than_or_equal: 0 }
 
   has_many :closest_stations 
-  accepts_nested_attributes_for :closest_stations
+  accepts_nested_attributes_for :closest_stations, allow_destroy: true
 
 
 end
