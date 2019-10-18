@@ -1,0 +1,86 @@
+<%= nested_form_for(property) do |f| %>
+  <% if property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+      <% property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+  <div class="field">
+    <%= f.label :"物件名" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"賃料" %>
+    <%= f.number_field :rent %><span>円</span>
+  </div>
+
+  <div class="field">
+    <%= f.label :"住所" %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :"築年数" %>
+    <%= f.number_field :age %><span>年</span>
+  </div>
+
+  <div class="field">
+    <%= f.label :"備考" %>
+    <%= f.text_area :remarks_column %>
+  </div>
+
+  <hr>
+
+
+
+
+  <%= f.fields_for :closest_stations do |f| %>
+
+    <div class="field">
+
+      <h2 class="name set_name" style="font-size: 14px;">
+        最寄り駅<span><%# = f.options[:child_index].to_i + 1 %></span>    
+      </h2>
+    </div>
+
+    <div class="field">
+      <%= f.label :"路線名" %>
+      <%= f.text_field :route %>
+    </div>
+
+    <div class="field">
+      <%= f.label :"駅名" %>
+      <%= f.text_field :station %>
+    </div>
+
+    <div class="field">
+      <%= f.label :"徒歩分数" %>
+      <%= f.number_field :on_foot %>分
+    </div>
+
+    <div class="actions">
+      <%= f.link_to_remove "削除" %>
+    </div>
+
+    <% f.options[:index] %>
+
+  <% end %>
+
+  <div class="actions">
+    <%= f.link_to_add "最寄り駅を追加", :closest_stations %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "登録する" %>
+  </div>
+<% end %>
